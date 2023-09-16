@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.tab-page{
+  height: 50vh;
+  border-top: 0px transparent !important;
+  border-bottom: 0px;
+}
+.spinner {
+  position: absolute; top: 30%; left: 40%;
+  opacity: .3;
+}

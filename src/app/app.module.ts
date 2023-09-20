@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {DeviceService} from "./devices/service/device.service";
 import {LocalDeviceService} from "./devices/service/localDevice.service";
 import {RouterModule, Routes} from "@angular/router";
+import {CustomStore} from "./devices/store/custom.store";
 
 export interface AppState {
 }
@@ -43,7 +44,7 @@ const routes: Routes = [
     StoreModule.forRoot(
       { devices: devicesReducer },
     ),
-    StoreRouterConnectingModule.forRoot(routerStateConfig),
+    //StoreRouterConnectingModule.forRoot(routerStateConfig),
     StoreDevtoolsModule.instrument(),
     [RouterModule.forRoot(routes)]
   ],

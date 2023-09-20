@@ -1,9 +1,8 @@
+// noinspection AngularUndefinedBinding
+
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Device} from "./store/domain";
 import {NgFor, NgIf} from "@angular/common";
-import {DeviceAddComponent} from "./deviceAdd.component";
-import {CountComponent} from "./count.component";
-import {SortComponent} from "./sort.component";
 
 @Component({
   selector: 'app-list',
@@ -16,11 +15,6 @@ import {SortComponent} from "./sort.component";
         </div>
       </div>
       <table class="table table-striped table-hover">
-        <thead>
-        <tr>
-          <th scope="col">Device</th>
-        </tr>
-        </thead>
         <tbody>
             <tr *ngFor="let device of devices; index as i"
                 (mouseenter)="selectDevice(device)"

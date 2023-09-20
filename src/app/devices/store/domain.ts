@@ -5,17 +5,17 @@ export interface Device {
 }
 
 export interface DeviceState {
-    isLoading: boolean,
-    isSorted: boolean,
-    selectedDevice?: string,
-    all: Device[],
+  isLoading: boolean,
+  isSorted: boolean,
+  selectedDevice?: string,
+  all: Device[],
 }
 
 export const initialState: DeviceState = {
-    isLoading: false,
-    isSorted: false,
-    selectedDevice: undefined,
-    all: [],
+  isLoading: false,
+  isSorted: false,
+  selectedDevice: undefined,
+  all: [],
 };
 
 export enum ActionTypes {

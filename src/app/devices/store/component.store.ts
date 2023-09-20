@@ -15,7 +15,7 @@ import {faker} from "@faker-js/faker";
 import {DeviceService} from "../service/device.service";
 
 @Injectable({providedIn: "root"})
-export class ComponentStore extends ComponentStore<DeviceState> implements StoreFacade {
+export class DeviceComponentStore extends ComponentStore<DeviceState> implements StoreFacade {
   nextId = () => crypto.randomUUID();
 
   readonly fullState$ = this.select(selectFullStateProjector);

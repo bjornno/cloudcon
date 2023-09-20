@@ -1,26 +1,32 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+// noinspection AngularUndefinedBinding
+
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {StoreFacade} from "../devices/store/storeFacade";
-import {AsyncPipe, JsonPipe} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgIf} from "@angular/common";
 
 // noinspection AngularMissingOrInvalidDeclarationInModule
 @Component({
   template: `
-<!--    <pre>{{ state$ | async | json }}</pre>-->
-    <div class="img-overlay-wrap" width="100%" height="100%">
-<!--       <pre class="foo">{{ state$ | async | json }}</pre>-->
-       <img src="/assets/ngrx-device.gif" width="100%">
-<!--      <img src="/assets/redux.png" width="1000">-->
-<!--      <svg width="1000" height="1000">-->
-<!--        <circle cx="75" cy="75" r="50" fill="transparent" stroke="red" stroke-width="1"/>-->
-<!--      </svg>-->
+    <div *ngIf="page === 1" (click)="updateState()">
+      <pre>{{ state$ | async | json }}</pre>
+    </div>
+    <img src="/assets/ngrx-new3.gif" width="100%" *ngIf="page === 2">
+    <div *ngIf="page === 3">
+      <img src="/assets/tagscomponent.png" width="100%">
+      <img src="/assets/devicetagcomponent.gif" width="100%" >
     </div>
   `,
   standalone: true,
-  styleUrls: ['./state.component.css'],
-  imports: [AsyncPipe, JsonPipe],
+  imports: [AsyncPipe, JsonPipe, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StateComponent {
+  @Input() page: number = 0;
   state$ = this.storeFacade.fullState$;
   constructor(private storeFacade: StoreFacade) {}
+
+  updateState() {
+    this.storeFacade.create();
+    this.storeFacade.sort(!this.storeFacade.isSorted());
+  }
 }

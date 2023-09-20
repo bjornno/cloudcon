@@ -15,5 +15,4 @@ export abstract class StoreFacade {
   public abstract unSelectDevice(): void;
   public abstract sort(isSorted: boolean): void;
   public abstract init(): void;
-
 }

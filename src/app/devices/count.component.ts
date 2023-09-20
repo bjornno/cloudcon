@@ -10,6 +10,4 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class CountComponent {
   @Input() count?: number | null;
-
-
 }

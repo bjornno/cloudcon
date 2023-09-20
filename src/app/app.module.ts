@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EffectsModule} from "@ngrx/effects";
-import {DevicesEffect, devicesFeature, NgrxStore,} from "./devices/store/ngrx.store";
+import {DevicesEffect, devicesReducer, NgrxStore,} from "./devices/store/ngrx.store";
 import {ActionReducerMap, StoreModule} from "@ngrx/store";
 import {routerReducer, StoreRouterConnectingModule} from "@ngrx/router-store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
@@ -15,7 +15,6 @@ import {LocalDeviceService} from "./devices/service/localDevice.service";
 import {RouterModule, Routes} from "@angular/router";
 
 export interface AppState {
-
 }
 
 export const routerReducers: ActionReducerMap<AppState> = {
@@ -42,7 +41,7 @@ const routes: Routes = [
     HttpClientModule,
     EffectsModule.forRoot([DevicesEffect]),
     StoreModule.forRoot(
-      { devices: devicesFeature.reducer },
+      { devices: devicesReducer },
     ),
     StoreRouterConnectingModule.forRoot(routerStateConfig),
     StoreDevtoolsModule.instrument(),

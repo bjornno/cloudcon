@@ -1,6 +1,5 @@
 import {
   createAction,
-  createFeature,
   createFeatureSelector,
   createReducer,
   createSelector,
@@ -24,26 +23,20 @@ import {faker} from "@faker-js/faker";
 import {DeviceService} from "../service/device.service";
 
 const deviceCreated = createAction(ActionTypes.DeviceCreated, props<{device: Device}>());
-
 const deviceDeleted = createAction(ActionTypes.DeviceDeleted, props<{deviceId: string}>());
-
 const loadDevices = createAction(ActionTypes.LoadDevices);
-
 const devicesLoaded = createAction(ActionTypes.DevicesLoaded, props<{ devices: Device[] }>())
-
 const deviceSelected = createAction(ActionTypes.DeviceSelected, props<{deviceId: string}>())
 const deviceUnSelected = createAction(ActionTypes.DeviceUnselected);
 const sortDevices = createAction(ActionTypes.DevicesSorted, props<{isSorted: boolean}>());
 
-export const devicesFeature = createFeature({
-  name: 'devices', reducer: createReducer(initialState,
-    on(loadDevices, (state, action) => deviceLoadingReducer(state)),
+export const devicesReducer = createReducer(initialState,
+    on(loadDevices, (state) => deviceLoadingReducer(state)),
     on(devicesLoaded, (state, action) => devicesLoadedReducer(state, action.devices)),
     on(deviceSelected, (state, action) => selectDeviceReducer(state, action.deviceId)),
     on(deviceUnSelected, (state) => unselectDeviceReducer(state)),
     on(sortDevices, (state, action) => sortDevicesReducer(state, action.isSorted)),
-  ),
-});
+  );
 
 // noinspection TypeScriptValidateTypes
 @Injectable()

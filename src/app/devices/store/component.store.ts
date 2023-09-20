@@ -15,7 +15,7 @@ import {faker} from "@faker-js/faker";
 import {DeviceService} from "../service/device.service";
 
 @Injectable({providedIn: "root"})
-export class DeviceComponentStore extends ComponentStore<DeviceState> implements StoreFacade {
+export class ComponentStore extends ComponentStore<DeviceState> implements StoreFacade {
   nextId = () => crypto.randomUUID();
 
   readonly fullState$ = this.select(selectFullStateProjector);
@@ -36,6 +36,7 @@ export class DeviceComponentStore extends ComponentStore<DeviceState> implements
       this.deviceService.list().pipe(tap((devices: Device[]) =>
         this.loadUpdater(devices))))));
 
+  // noinspection JSAnnotator
   delete = this.effect((deviceId$: Observable<string>) =>
     deviceId$.pipe(tap(this.setLoading), exhaustMap((deviceId: string) =>
       this.deviceService.delete(deviceId).pipe(tap(() => this.load())))));

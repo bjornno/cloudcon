@@ -6,16 +6,14 @@ Edit app.module.ts#48 to switch between the different approaches.
 
 The project was built with Angular CLI.
 
+nvm install 18.10.2 &
+npm install -g @angular/cli &
+npm install &
+ng serve
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Gitub Code Spaces
-
-nvm install 18.10.2
-npm install -g @angular/cli
-ng serve
 
 ## Backend server
 It also consists of a small backend express server module in server/. node index.js to start.

@@ -20,6 +20,7 @@ import {StateComponent} from "../state/state.component";
         <app-count [count]="count$ | async" class="col-sm-2"></app-count>
         <app-sort [isSorted]="isSorted()" (onSort)="sortDevices($event)" class="col-sm-7">></app-sort>
         <app-add (deviceAdded)="addDevice()" class="col-sm-1"></app-add>
+        <button class="invisiblebutton col-sm-1" (click)="openNgrxFlow()"></button>
       </div>
       <div class="row">
         <span class="col-sm-1"></span>
@@ -60,11 +61,14 @@ export class ContainerComponent {
   }
 
   addDevice() {
-    const modalRef = this.modalService.open(StateComponent, {size: "xl" });
     this.storeFacade.create();
   }
 
   sortDevices(isSorted: boolean) {
     this.storeFacade.sort(isSorted);
+  }
+
+  openNgrxFlow() {
+    this.modalService.open(StateComponent, {size: "xl" });
   }
 }

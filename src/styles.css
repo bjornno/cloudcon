@@ -8,3 +8,8 @@
   position: absolute; top: 30%; left: 40%;
   opacity: .3;
 }
+.invisiblebutton {
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}

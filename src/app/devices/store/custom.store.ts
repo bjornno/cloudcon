@@ -10,8 +10,6 @@ import {
 import {StoreFacade} from "./storeFacade";
 import {faker} from "@faker-js/faker";
 import {DeviceService} from "../service/device.service";
-import {toSignal} from "@angular/core/rxjs-interop";
-
 
 @Injectable({providedIn: "root"})
 export class CustomStore implements StoreFacade {
